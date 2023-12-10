@@ -42,8 +42,16 @@ with st.spinner(text="Generating curl example...",  cache=True):
     # Use yaml to generate example curl & expected response
     example_curl = prompts.provide_example_curl_data(llm, yaml)
 
-with st.expander("Show Curl data"):
+with st.expander("Show curl data"):
     st.markdown(example_curl)
+
+with st.spinner(text="Generating python code example...",  cache=True):
+    # Use yaml to generate example python batch upload request
+    example_python = prompts.batch_create_example(llm, yaml)
+
+with st.expander("Show python code"):
+    st.markdown(example_python)
+
 
 
 
