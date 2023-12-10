@@ -18,10 +18,8 @@ if __name__ == "__main__":
 
     # Use the model generate a summary of the yaml...can be slow
     summary = prompts.summarize_api(llm, yaml)
-    # Use the summary to generate a set of test cases...can be slow.
-    # You could probably go directly from yamal to test cases.
-    # without the summary, but might be useful to see how to chain outputs.
-    # There's probably a better way of doing this chaining.
+    # Use the summary to generate a set of test cases
+    # You could pass the yaml in here to see if you get better results
     test_cases = prompts.describe_test_cases(llm, summary)
     # use the yaml again here
     example_curl = prompts.provide_example_curl_data(llm, yaml)

@@ -22,18 +22,16 @@ with st.expander("Show API yaml"):
     st.markdown("```" + yaml + "```")
 
 with st.spinner(text="Generating Summary...",  cache=True):
-    # Use the model generate a summary of the yaml... can be slow
+    # Use the model to generate a summary of the yaml.
     summary = prompts.summarize_api(llm, yaml)
 
 with st.expander("Show Summary"):
     st.markdown(summary)
 
 with st.spinner(text="Generating Test cases...",  cache=True):
-    # Use the summary to generate a set of test cases...can be slow.
-    # You could probably go directly from yamal to test cases.
-    # without the summary, but might be useful to see how to chain outputs.
-    # There's probably a better way of doing this chaining.
-    test_cases = prompts.describe_test_cases(llm, yaml)
+    # Use the summary from previous stage to generate a set of test cases
+    # You could pass the yaml in here to see if you get better results
+    test_cases = prompts.describe_test_cases(llm, summary)
 
 with st.expander("Show Test Cases"):
     st.markdown(test_cases)
