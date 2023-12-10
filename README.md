@@ -25,4 +25,4 @@ Next setup a python venv:
 
 Run the UI: `streamlit run src/ui.py`
 **or**
-Run the command line example: `python src/engine.py`
+Run the command line example: `python src/cli.py`
