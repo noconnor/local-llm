@@ -45,7 +45,7 @@ with st.spinner(text="Generating curl example...",  cache=True):
 with st.expander("Show curl data"):
     st.markdown(example_curl)
 
-with st.spinner(text="Generating python code example...",  cache=True):
+with st.spinner(text="Generating code example...",  cache=True):
     # Use yaml to generate example kotlin batch upload request
     example_kotlin = prompts.batch_create_example(llm, yaml)
 
