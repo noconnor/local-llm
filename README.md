@@ -5,7 +5,7 @@ Example code to use langchain library to run queries against an LLama model
 
 ## Setup:
 
-* See install instructions for ollama app: https://ollama.ai/download
+* See install instructions for ollama app: https://ollama.ai/download & from commandline run `ollama pull llama2`
   * Reference: https://python.langchain.com/docs/guides/local_llms#quickstart
 * First time you run this it will be slow as the model needs to be downloaded (basic model is ~4GB)
 * Models are stored under ~/.ollama/models/blobs/
