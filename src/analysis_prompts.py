@@ -40,7 +40,7 @@ def provide_example_curl_data(llm, yaml):
 
 
 def batch_create_example(llm, yaml):
-    template = """Using the API definition from the provided yaml, can you provide example python code that will
+    template = """Using the API definition from the provided yaml, can you provide example kotlin code that will
     create 100 pets with different names and tags.
 
     ```{yaml}```

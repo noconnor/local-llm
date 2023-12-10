@@ -25,8 +25,8 @@ if __name__ == "__main__":
     test_cases = prompts.describe_test_cases(llm, summary)
     # use the yaml again here
     example_curl = prompts.provide_example_curl_data(llm, yaml)
-    # Use yaml to generate example python batch upload request
-    example_python = prompts.batch_create_example(llm, yaml)
+    # Use yaml to generate example kotlin batch upload request
+    example_kotlin = prompts.batch_create_example(llm, yaml)
 
     print("\n\n*** API overview ****")
     print(summary)
@@ -34,6 +34,6 @@ if __name__ == "__main__":
     print(test_cases)
     print("\n\n*** Example curl ****")
     print(example_curl)
-    print("\n\n*** Example python ****")
-    print(example_python)
+    print("\n\n*** Example kotlin ****")
+    print(example_kotlin)
 
