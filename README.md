@@ -22,6 +22,7 @@ Next setup a python venv:
 * if you install anymore packages run: `pip freeze > requirements.txt`
 
 Run the script: `python src/engine.py`
+Run the UI: `streamlit run src/ui.py`
 
 
 ### Example CLI output:
