@@ -23,10 +23,13 @@ if __name__ == "__main__":
     # without the summary, but might be useful to see how to chain outputs.
     # There's probably a better way of doing this chaining.
     test_cases = prompts.describe_test_cases(llm, summary)
+    # use the yaml again here
+    example_curl = prompts.provide_example_curl_data(llm, yaml)
 
     print("\n\n*** API overview ****")
     print(summary)
     print("\n\n*** Example test cases ****")
     print(test_cases)
-
+    print("\n\n*** Example curl ****")
+    print(example_curl)
 

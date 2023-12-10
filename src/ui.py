@@ -38,6 +38,12 @@ with st.spinner(text="Generating Test cases...",  cache=True):
 with st.expander("Show Test Cases"):
     st.markdown(test_cases)
 
+with st.spinner(text="Generating curl example...",  cache=True):
+    # Use yaml to generate example curl & expected response
+    example_curl = prompts.provide_example_curl_data(llm, yaml)
+
+with st.expander("Show Curl data"):
+    st.markdown(example_curl)
 
 
 

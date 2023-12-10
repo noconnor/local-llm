@@ -12,7 +12,7 @@ def summarize_api(llm, yaml):
 
     prompt = PromptTemplate(template=template, input_variables=["yaml"])
     llm_chain = LLMChain(prompt=prompt, llm=llm)
-    return llm_chain.run(yaml)
+    return llm_chain.run(yaml=yaml)
 
 
 def describe_test_cases(llm, api_summary):
@@ -25,3 +25,15 @@ def describe_test_cases(llm, api_summary):
     prompt = PromptTemplate(template=template, input_variables=["summary"])
     llm_chain = LLMChain(prompt=prompt, llm=llm)
     return llm_chain.run(summary=api_summary)
+
+
+def provide_example_curl_data(llm, yaml):
+    template = """Using the API definition from the provided yaml, can you provide and example curl request and 
+    an expected response for the specified endpoint.
+
+    ```{yaml}```
+    """
+
+    prompt = PromptTemplate(template=template, input_variables=["yaml"])
+    llm_chain = LLMChain(prompt=prompt, llm=llm)
+    return llm_chain.run(yaml=yaml)
