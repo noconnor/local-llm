@@ -5,6 +5,8 @@ from langchain.llms import Ollama
 
 st.write("Example LLama usage for swagger API analysis")
 
+st.write("Note on [\"Hallucinations\"](https://x.com/karpathy/status/1733299213503787018?s=46)")
+
 # Loads model into RAM
 # This is using Facebook's llama model (7B params - i.e. the smallest model available)
 # It takes about 4GB of RAM to run.
@@ -17,6 +19,14 @@ llm = Ollama(model="llama2")
 # as the model will have a limit on how much context it can handle
 dir_path = os.path.dirname(os.path.realpath(__file__))
 yaml = open(os.path.join(dir_path, 'example_api.yaml'), 'r').read()
+
+
+with st.spinner(text="Generating Message...",  cache=True):
+    # Use the model to generate a very important message
+    message = prompts.important_message()
+
+with st.expander("Show Important message"):
+    st.markdown(message)
 
 with st.expander("Show API yaml"):
     st.markdown("```" + yaml + "```")

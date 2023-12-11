@@ -1,10 +1,18 @@
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
+from langchain.llms import Ollama
+
+
+def important_message():
+    llm_tmp = Ollama(model="llama2")
+    prompt = """Sing Happy Birthday to Paula. And mention shes from Mayo which is not as good as Dublin."""
+    return llm_tmp(prompt)
 
 
 def summarize_api(llm, yaml):
-    template = """Can you summarize what the API described in the yaml does.
-    Provide a step by step analysis of its inputs and outputs.
+    template = """Summarize the API described in the provided yaml.
+    Generate a step by step analysis of its inputs and outputs.
+    Include all http methods, including POST endpoints.
     Keep the summary concise.
 
     ```{yaml}```
@@ -16,7 +24,7 @@ def summarize_api(llm, yaml):
 
 
 def describe_test_cases(llm, api_summary):
-    template = """Using the API summary, can you describe 5 test cases that should be covered when writing automated 
+    template = """Using the API summary, describe 5 test cases that should be covered when writing automated 
     tests for this API. Provide your answer in bullet point format.
 
     ```{summary}```
@@ -28,7 +36,7 @@ def describe_test_cases(llm, api_summary):
 
 
 def provide_example_curl_data(llm, yaml):
-    template = """Using the API definition from the provided yaml, can you provide an example curl request and 
+    template = """Using the API definition from the provided yaml, generate an example curl request and 
     an expected response for the specified endpoint.
 
     ```{yaml}```
@@ -40,7 +48,7 @@ def provide_example_curl_data(llm, yaml):
 
 
 def batch_create_example(llm, yaml):
-    template = """Using the API definition from the provided yaml, can you provide example kotlin code that will
+    template = """Using the API definition from the provided yaml, generate example kotlin code that will
     create 100 pets with different names and tags.
 
     ```{yaml}```

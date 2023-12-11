@@ -16,6 +16,7 @@ if __name__ == "__main__":
     dir_path = os.path.dirname(os.path.realpath(__file__))
     yaml = open(os.path.join(dir_path, 'example_api.yaml'), 'r').read()
 
+    message = prompts.important_message()
     # Use the model generate a summary of the yaml...can be slow
     summary = prompts.summarize_api(llm, yaml)
     # Use the summary to generate a set of test cases
@@ -26,6 +27,8 @@ if __name__ == "__main__":
     # Use yaml to generate example kotlin batch upload request
     example_kotlin = prompts.batch_create_example(llm, yaml)
 
+    print("\n\n*** Important message ****")
+    print(message)
     print("\n\n*** API overview ****")
     print(summary)
     print("\n\n*** Example test cases ****")
