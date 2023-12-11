@@ -3,7 +3,7 @@ import analysis_prompts as prompts
 import os
 from langchain.llms import Ollama
 
-st.write("Example LLama usage for swagger API analysis")
+st.write("Example demo app on how to use use local Ollama models.")
 
 st.write("Note on [\"Hallucinations\"](https://x.com/karpathy/status/1733299213503787018?s=46)")
 
