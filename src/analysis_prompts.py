@@ -4,6 +4,8 @@ from langchain.llms import Ollama
 
 
 def important_message():
+    # Temp model
+    # https://python.langchain.com/docs/integrations/llms/ollama
     llm_tmp = Ollama(model="llama2")
     prompt = """Sing Happy Birthday to Paula. And mention shes from Mayo which is not as good as Dublin."""
     return llm_tmp(prompt)

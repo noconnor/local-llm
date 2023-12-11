@@ -8,6 +8,8 @@ if __name__ == "__main__":
     # It takes about 4GB of RAM to run.
     # Larger models will perform better.
     # When using this model, calls will be made to localhost:11434/ but will not be sent to any remote endpoints
+    # https://python.langchain.com/docs/integrations/llms/ollama
+    # Might also be worth looking at https://python.langchain.com/docs/integrations/chat/ollama
     llm = Ollama(model="llama2")
 
     # Loads an example API yaml file

@@ -6,12 +6,15 @@ from langchain.llms import Ollama
 st.write("Example demo app on how to use use local Ollama models.")
 
 st.write("Note on [\"Hallucinations\"](https://x.com/karpathy/status/1733299213503787018?s=46)")
+st.write("If you refresh the page, new/different results will be generated")
 
 # Loads model into RAM
 # This is using Facebook's llama model (7B params - i.e. the smallest model available)
 # It takes about 4GB of RAM to run.
 # Larger models will perform better.
 # When using this model, calls will be made to localhost:11434/ but will not be sent to any remote endpoints
+# https://python.langchain.com/docs/integrations/llms/ollama
+# Might also be worth looking at https://python.langchain.com/docs/integrations/chat/ollama
 llm = Ollama(model="llama2")
 
 # Loads an example API yaml file
