@@ -38,8 +38,7 @@ def describe_test_cases(llm, api_summary):
 
 
 def provide_example_curl_data(llm, yaml):
-    template = """Using the API definition from the provided yaml, generate an example curl request and 
-    an expected response for the specified endpoint.
+    template = """Using the API definition from the provided yaml, generate example curl GET, POST and DELETE requests.
 
     ```{yaml}```
     """
@@ -50,8 +49,8 @@ def provide_example_curl_data(llm, yaml):
 
 
 def batch_create_example(llm, yaml):
-    template = """Using the API definition from the provided yaml, generate example kotlin code that will
-    create 100 pets with different names and tags.
+    template = """Using the API definition from the provided yaml, step by step generate example kotlin code that will
+    use the API to create 100 pets with different names and tags.
 
     ```{yaml}```
     """
