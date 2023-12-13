@@ -12,13 +12,13 @@ model = st.selectbox('Select Model', ('mistral', 'llama2'), index=0)
 
 st.write("You have selected: " + model)
 
-message_container = st.empty()
+# Reset UI containers on each page reload - reload happens when a UI event is triggered (like a new model selection)
 yaml_container = st.empty()
+message_container = st.empty()
 summary_container = st.empty()
 testcase_container = st.empty()
 curl_container = st.empty()
 code_container = st.empty()
-
 
 # Loads model into RAM
 # This is using Facebook's llama model (7B params - i.e. the smallest model available)
@@ -35,6 +35,10 @@ llm = Ollama(model=model)
 dir_path = os.path.dirname(os.path.realpath(__file__))
 yaml = open(os.path.join(dir_path, 'example_api.yaml'), 'r').read()
 
+with yaml_container.container():
+    with st.expander("Show API yaml"):
+        st.markdown("```" + yaml + "```")
+
 with message_container.container():
     with st.spinner(text="Generating Message...",  cache=True):
         # Use the model to generate a very important message
@@ -42,10 +46,6 @@ with message_container.container():
 
     with st.expander("Show Important message"):
         st.markdown(message)
-
-with yaml_container.container():
-    with st.expander("Show API yaml"):
-        st.markdown("```" + yaml + "```")
 
 with summary_container.container():
     with st.spinner(text="Generating Summary...",  cache=True):
