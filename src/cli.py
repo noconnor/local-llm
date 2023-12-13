@@ -10,7 +10,7 @@ if __name__ == "__main__":
     # When using this model, calls will be made to localhost:11434/ but will not be sent to any remote endpoints
     # https://python.langchain.com/docs/integrations/llms/ollama
     # Might also be worth looking at https://python.langchain.com/docs/integrations/chat/ollama
-    llm = Ollama(model="llama2")
+    llm = Ollama(model="mistral")
 
     # Loads an example API yaml file
     # You'd probably want to split this up into chunks before sending it to the model
@@ -18,7 +18,7 @@ if __name__ == "__main__":
     dir_path = os.path.dirname(os.path.realpath(__file__))
     yaml = open(os.path.join(dir_path, 'example_api.yaml'), 'r').read()
 
-    message = prompts.important_message()
+    message = prompts.important_message(llm)
     # Use the model generate a summary of the yaml...can be slow
     summary = prompts.summarize_api(llm, yaml)
     # Use the summary to generate a set of test cases

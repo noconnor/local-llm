@@ -15,7 +15,7 @@ st.write("If you refresh the page, new/different results will be generated")
 # When using this model, calls will be made to localhost:11434/ but will not be sent to any remote endpoints
 # https://python.langchain.com/docs/integrations/llms/ollama
 # Might also be worth looking at https://python.langchain.com/docs/integrations/chat/ollama
-llm = Ollama(model="llama2")
+llm = Ollama(model="mistral")
 
 # Loads an example API yaml file
 # You'd probably want to split this up into chunks before sending it to the model
@@ -26,7 +26,7 @@ yaml = open(os.path.join(dir_path, 'example_api.yaml'), 'r').read()
 
 with st.spinner(text="Generating Message...",  cache=True):
     # Use the model to generate a very important message
-    message = prompts.important_message()
+    message = prompts.important_message(llm)
 
 with st.expander("Show Important message"):
     st.markdown(message)

@@ -3,12 +3,9 @@ from langchain.chains import LLMChain
 from langchain.llms import Ollama
 
 
-def important_message():
-    # Temp model
-    # https://python.langchain.com/docs/integrations/llms/ollama
-    llm_tmp = Ollama(model="llama2")
+def important_message(llm):
     prompt = """Sing Happy Birthday to Paula. And mention shes from Mayo which is not as good as Dublin."""
-    return llm_tmp(prompt)
+    return llm(prompt)
 
 
 def summarize_api(llm, yaml):
