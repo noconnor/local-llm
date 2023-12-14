@@ -1,6 +1,5 @@
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
-from langchain.llms import Ollama
 
 
 def important_message(llm):

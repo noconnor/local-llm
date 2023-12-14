@@ -17,8 +17,11 @@ if __name__ == "__main__":
     # as the model will have a limit on how much context it can handle
     dir_path = os.path.dirname(os.path.realpath(__file__))
     yaml = open(os.path.join(dir_path, 'example_api.yaml'), 'r').read()
+    patch = open(os.path.join(dir_path, 'example.patch'), 'r').read()
 
     message = prompts.important_message(llm)
+    # Use the model generate an analysis of the code patch...can be slow
+    analysis = prompts.code_patch_analysis(llm, patch)
     # Use the model generate a summary of the yaml...can be slow
     summary = prompts.summarize_api(llm, yaml)
     # Use the summary to generate a set of test cases
@@ -31,6 +34,8 @@ if __name__ == "__main__":
 
     print("\n\n*** Important message ****")
     print(message)
+    print("\n\n*** Patch overview ****")
+    print(analysis)
     print("\n\n*** API overview ****")
     print(summary)
     print("\n\n*** Example test cases ****")

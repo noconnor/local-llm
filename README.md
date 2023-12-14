@@ -7,10 +7,10 @@ Example code to use langchain library to run queries against an ollama models
 
 * See install instructions for ollama app: https://ollama.ai/download
   * Reference: https://python.langchain.com/docs/guides/local_llms#quickstart
-* From commandline run  
-  * `ollama pull mistral`
-  * `ollama pull llama2`
-* First time you run this it will be slow as the models needs to be downloaded (each model is ~4GB)
+* From commandline run:
+  * `ollama pull mistral` (4GB on disk, ~8GB in RAM)
+  * `ollama pull llama2`  (4GB on disk, ~8GB in RAM)
+* First time you run this it will be slow as the models needs to be downloaded.
 * Models are stored under ~/.ollama/models/blobs/
 * Ollama runs a local API : you can browse to `http://localhost:11434/`
 * To stop ollama - see top right of mac toolbar near the clock: https://github.com/jmorganca/ollama/issues/690#issuecomment-1745473655
@@ -29,5 +29,7 @@ Next setup a python venv:
 
 
 Run the UI: `streamlit run src/ui.py`
+
 **or**
+
 Run the command line example: `python src/cli.py`
