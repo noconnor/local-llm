@@ -55,3 +55,15 @@ def batch_create_example(llm, yaml):
     prompt = PromptTemplate(template=template, input_variables=["yaml"])
     llm_chain = LLMChain(prompt=prompt, llm=llm)
     return llm_chain.run(yaml=yaml)
+
+
+def code_patch_analysis(llm, patch):
+    template = """Using the provided code patch, provide a concise summary of the changes made.
+    Summary should be 1 sentence long.
+
+    ```{patch}```
+    """
+
+    prompt = PromptTemplate(template=template, input_variables=["patch"])
+    llm_chain = LLMChain(prompt=prompt, llm=llm)
+    return llm_chain.run(patch=patch)

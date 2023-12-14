@@ -13,8 +13,10 @@ model = st.selectbox('Select Model', ('mistral', 'llama2'), index=0)
 st.write("You have selected: " + model)
 
 # Reset UI containers on each page reload - reload happens when a UI event is triggered (like a new model selection)
-yaml_container = st.empty()
 message_container = st.empty()
+patch_container = st.empty()
+analysis_container = st.empty()
+yaml_container = st.empty()
 summary_container = st.empty()
 testcase_container = st.empty()
 curl_container = st.empty()
@@ -34,10 +36,7 @@ llm = Ollama(model=model)
 # as the model will have a limit on how much context it can handle
 dir_path = os.path.dirname(os.path.realpath(__file__))
 yaml = open(os.path.join(dir_path, 'example_api.yaml'), 'r').read()
-
-with yaml_container.container():
-    with st.expander("Show API yaml"):
-        st.markdown("```" + yaml + "```")
+patch = open(os.path.join(dir_path, 'example.patch'), 'r').read()
 
 with message_container.container():
     with st.spinner(text="Generating Message...",  cache=True):
@@ -46,6 +45,21 @@ with message_container.container():
 
     with st.expander("Show Important message"):
         st.markdown(message)
+
+with patch_container.container():
+    with st.expander("Show patch"):
+        st.markdown("```" + patch + "```")
+
+with analysis_container.container():
+    with st.spinner(text="Generating Patch Analysis...",  cache=True):
+        analysis = prompts.code_patch_analysis(llm, patch)
+
+    with st.expander("Show Analysis message"):
+        st.markdown(analysis)
+
+with yaml_container.container():
+    with st.expander("Show API yaml"):
+        st.markdown("```" + yaml + "```")
 
 with summary_container.container():
     with st.spinner(text="Generating Summary...",  cache=True):
