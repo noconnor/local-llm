@@ -1,9 +1,11 @@
 # ollama + langchain
 
-Example code to use langchain library to run queries against an ollama models 
+Example code to use [langchain](https://python.langchain.com/docs/get_started/introduction) library to run queries against an [ollama](https://ollama.ai/) models.
+
+See [Ollama examples](https://github.com/jmorganca/ollama/tree/main/examples) for reference code.
 
 
-## Setup:
+## Setup Local models:
 
 * See install instructions for ollama app: https://ollama.ai/download
   * Reference: https://python.langchain.com/docs/guides/local_llms#quickstart
@@ -16,11 +18,10 @@ Example code to use langchain library to run queries against an ollama models
 * To stop ollama - see top right of mac toolbar near the clock: https://github.com/jmorganca/ollama/issues/690#issuecomment-1745473655
 * Re-start ollama - `ollama serve mistral` or `ollama serve llama2`
 
-
 Once the setup steps above have been run, you should see a server running on  http://localhost:11434/ 
 
 
-Next setup a python venv:
+## Setup a python venv:
 
 * create new venv: `python3 -m venv env`      
 * enable venv: `source env/bin/activate`
@@ -28,8 +29,10 @@ Next setup a python venv:
 * if you install anymore packages run: `pip freeze > requirements.txt`
 
 
-Run the UI: `streamlit run src/ui.py`
+## Run Examples:
 
-**or**
-
-Run the command line example: `python src/cli.py`
+* Instruction processing: 
+  * Run the UI, from the commandline run: `streamlit run src/instruct/ui.py`
+  * Or Run the same prompts via the command line: `python src/instruct/cli.py`
+* Document Summaries:
+  * Run the UI, from the commandline run: `streamlit run src/summarise/ui.py`
