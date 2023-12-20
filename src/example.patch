@@ -3,9 +3,7 @@ index 6a7c275..62b592a 100644
 --- a/README.md
 +++ b/README.md
 @@ -5,4 +5,13 @@
- [status-image]: https://screwdriver.ouroath.com/pipelines/1063842/badge
- [status-url]: https://screwdriver.ouroath.com/pipelines/1063842
- 
+
 -Repo for device atlas download lambda code
 \ No newline at end of file
 +Repo for device atlas download lambda code
