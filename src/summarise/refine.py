@@ -36,4 +36,5 @@ def summarise(llm, docs):
         input_key="input_documents",
         output_key="output_text",
     )
-    return chain({"input_documents": docs}, return_only_outputs=True)
+    result = chain({"input_documents": docs}, return_only_outputs=True)
+    return result["output_text"]
