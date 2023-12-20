@@ -9,6 +9,7 @@ def summarise(llm, docs):
     #
     # Each doc (page) is summarised, then the summary and the next page are passed to the model to refine the summary
     # further, until there are no more pages
+    # https://python.langchain.com/docs/use_cases/summarization#option-3.-refine
     prompt_template = """Write a concise summary of the following:
     {text}
     CONCISE SUMMARY:"""
