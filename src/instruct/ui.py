@@ -2,15 +2,16 @@ import streamlit as st
 import analysis_prompts as prompts
 import os
 from langchain.llms import Ollama
+from langchain.llms import OpenAI
 
 st.write("Example demo app on how to use use local Ollama models.")
 
 st.write("Note on [\"Hallucinations\"](https://x.com/karpathy/status/1733299213503787018?s=46)")
 st.write("If you refresh the page, new/different results will be generated")
 
-model = st.selectbox('Select Model', ('mistral', 'llama2'), index=0)
-
-st.write("You have selected: " + model)
+if not os.getenv("USE_OPEN_AI"):
+    model = st.selectbox('Select Model', ('mistral', 'llama2'), index=0)
+    st.write("You have selected: " + model)
 
 # Reset UI containers on each page reload - reload happens when a UI event is triggered (like a new model selection)
 message_container = st.empty()
@@ -29,7 +30,8 @@ code_container = st.empty()
 # When using this model, calls will be made to localhost:11434/ but will not be sent to any remote endpoints
 # https://python.langchain.com/docs/integrations/llms/ollama
 # Might also be worth looking at https://python.langchain.com/docs/integrations/chat/ollama
-llm = Ollama(model=model)
+# Make sure to run: `export OPENAI_API_KEY=...` if using openAI
+llm = OpenAI() if os.getenv("USE_OPEN_AI") else Ollama(model=model)
 
 # Loads an example API yaml file
 # You'd probably want to split this up into chunks before sending it to the model

@@ -7,6 +7,18 @@ See [Ollama examples](https://github.com/jmorganca/ollama/tree/main/examples) fo
 
 ## Setup Local models:
 
+**To use OpenAI** (ollama mistral seems to produce better results)
+
+* Register with OpenAI: https://platform.openai.com/
+* Create an API key
+* export the key: `export OPENAI_API_KEY=<KEY>`
+* export the flag: `export USE_OPEN_AI=true` (to clear openai flag, run `unset USE_OPEN_AI`)
+
+Once the above steps have been completed, move to the [Setup Env](#setup-a-python-venv) steps
+
+
+**To use Ollama:**
+
 * See install instructions for ollama app: https://ollama.ai/download
   * Reference: https://python.langchain.com/docs/guides/local_llms#quickstart
 * From commandline run:
@@ -28,6 +40,7 @@ Once the setup steps above have been run, you should see a server running on  ht
 * install requirements: `pip install -r requirements.txt`
 * if you install anymore packages run: `pip freeze > requirements.txt`
 
+Next, move to the [Run Examples](#run-examples) steps
 
 ## Run Examples:
 

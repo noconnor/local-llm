@@ -4,6 +4,7 @@ from langchain.prompts import PromptTemplate
 from langchain.chains.summarize import load_summarize_chain
 from langchain.docstore.document import Document
 from langchain.llms import Ollama
+from langchain.llms import OpenAI
 
 # Find what directory this file is located in
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -39,16 +40,19 @@ def load_pdfs():
 
 def summarise_changes():
 
-    llm = Ollama(model='mistral')  # could try llama2 model
+    # Make sure to run: export OPENAI_API_KEY=...
+    # Before switching to openAI model
+    # Make sure to run: `export OPENAI_API_KEY=...` if using openAI
+    llm = OpenAI() if os.getenv("USE_OPEN_AI") else Ollama(model='mistral')
 
     docs = load_pdfs()
 
-    prompt_template = """Write a concise bullet point summary of changes between the two texts provided.
-    Specifically compare the text labelled Version1 with the text labelled Version2 and provide a summary of the changes 
-    made between the two texts. Outline what was added, what was removed and what was changed.
+    prompt_template = """Write a summary of changes between the two texts provided.
+    Specifically compare the text labelled Version1 with the text labelled Version2 and provide a helpful human readable 
+    and detailed summary of the changes.
     If there are no changes between the texts, dont produce any result.
     {text}
-    CONCISE SUMMARY OF CHANGES:"""
+    SUMMARY OF CHANGES:"""
     prompt = PromptTemplate(input_variables=["text"], template=prompt_template)
 
     chain = load_summarize_chain(llm, chain_type="stuff", prompt=prompt)

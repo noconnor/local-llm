@@ -1,4 +1,5 @@
 from langchain.llms import Ollama
+from langchain.llms import OpenAI
 import analysis_prompts as prompts
 import os
 
@@ -10,9 +11,11 @@ if __name__ == "__main__":
     # When using this model, calls will be made to localhost:11434/ but will not be sent to any remote endpoints
     # https://python.langchain.com/docs/integrations/llms/ollama
     # Might also be worth looking at https://python.langchain.com/docs/integrations/chat/ollama
-    llm = Ollama(model="mistral")
+    # Make sure to run: `export OPENAI_API_KEY=...` if using openAI
+    llm = OpenAI() if os.getenv("USE_OPEN_AI") else Ollama(model='mistral')
 
-    # Loads an example API yaml file
+
+# Loads an example API yaml file
     # You'd probably want to split this up into chunks before sending it to the model
     # as the model will have a limit on how much context it can handle
     dir_path = os.path.dirname(os.path.realpath(__file__))

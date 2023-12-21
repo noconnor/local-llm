@@ -3,6 +3,7 @@ import os
 
 from langchain.document_loaders import PyPDFLoader
 from langchain.llms import Ollama
+from langchain.llms import OpenAI
 
 import map_reduce
 import refine
@@ -23,8 +24,8 @@ better results.
 method = st.selectbox('Select Summary Method', ('Map-Reduce', 'Refine'), index=0)
 summary = map_reduce.summarise if method == "Map-Reduce" else refine.summarise
 
-# Create the model reference
-llm = Ollama(model='mistral')  # could try llama2 model
+# Make sure to run: `export OPENAI_API_KEY=...` if using openAI
+llm = OpenAI() if os.getenv("OPEN_AI") else Ollama(model='mistral')
 
 # Load PDF and split into pages
 # https://python.langchain.com/docs/modules/data_connection/document_loaders/pdf#using-pypdf
