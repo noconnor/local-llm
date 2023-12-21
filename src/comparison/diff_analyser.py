@@ -24,7 +24,7 @@ def load_pdfs():
     changes = []
     for i, j in enumerate(v2_docs):
         if i < len(v1_docs):
-            before = v1_docs[i]
+            before = v1_docs[i].page_content
             after = j.page_content
             diff = f"Version1: {before} \n\n Version2: {after} \n\n"
             changes.append(Document(page_content=diff))
@@ -59,3 +59,4 @@ def summarise_changes():
 
 if __name__ == "__main__":
     print(summarise_changes())
+    # print(load_pdfs())
