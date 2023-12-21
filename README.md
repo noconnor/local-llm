@@ -36,3 +36,5 @@ Once the setup steps above have been run, you should see a server running on  ht
   * Or Run the same prompts via the command line: `python src/instruct/cli.py`
 * Document Summaries:
   * Run the UI, from the commandline run: `streamlit run src/summarise/ui.py`
+* Document Comparison:
+  * Run the UI, from the commandline run: `streamlit run src/comparison/ui.py`
