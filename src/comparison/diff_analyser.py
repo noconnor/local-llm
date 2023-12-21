@@ -41,7 +41,7 @@ def summarise_changes():
 
     prompt_template = """Write a concise summary of changes between the two texts provided.
     Specifically compare the text labelled Version1 with the text labelled Version2 and provide summary of the changes.
-    If there are no changes between the tests, dont produce any result.
+    If there are no changes between the texts, dont produce any result.
     {text}
     CONCISE SUMMARY OF CHANGES:"""
     prompt = PromptTemplate(input_variables=["text"], template=prompt_template)
