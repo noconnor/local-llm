@@ -10,13 +10,17 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 
 
 def load_pdfs():
+    # TODO: Look into better ways to combine these documents, you ultimately want to end up with a big blob of text
+    #  with some markers that the model can compare.
+
     v1 = PyPDFLoader(os.path.join(dir_path, 'v1.pdf'))
     v1_docs = v1.load_and_split()
 
     v2 = PyPDFLoader(os.path.join(dir_path, 'v2.pdf'))
     v2_docs = v2.load_and_split()
 
-    # TODO: add logic to figure out which is the larger docs before combining
+    # TODO: Add logic to figure out which is the larger docs before combining - this will only currently work if v2
+    #  docs list is bigger than v1
     changes = []
     for i, j in enumerate(v2_docs):
         if i < len(v1_docs):
@@ -40,7 +44,8 @@ def summarise_changes():
     docs = load_pdfs()
 
     prompt_template = """Write a concise bullet point summary of changes between the two texts provided.
-    Specifically compare the text labelled Version1 with the text labelled Version2 and provide summary of the changes.
+    Specifically compare the text labelled Version1 with the text labelled Version2 and provide summary of the changes 
+    made in the Version2 text.
     If there are no changes between the texts, dont produce any result.
     {text}
     CONCISE SUMMARY OF CHANGES:"""
