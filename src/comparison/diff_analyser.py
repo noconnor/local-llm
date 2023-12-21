@@ -44,8 +44,8 @@ def summarise_changes():
     docs = load_pdfs()
 
     prompt_template = """Write a concise bullet point summary of changes between the two texts provided.
-    Specifically compare the text labelled Version1 with the text labelled Version2 and provide summary of the changes 
-    made in the Version2 text.
+    Specifically compare the text labelled Version1 with the text labelled Version2 and provide a summary of the changes 
+    made between the two texts. Outline what was added, what was removed and what was changed.
     If there are no changes between the texts, dont produce any result.
     {text}
     CONCISE SUMMARY OF CHANGES:"""
