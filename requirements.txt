@@ -18,7 +18,7 @@ fsspec==2023.12.2
 functional-python==0.3.1
 gitdb==4.0.11
 GitPython==3.1.40
-http-server-base==2.0.10
+http-server-base==2.0.8
 huggingface-hub==0.20.1
 idna==3.6
 importlib-metadata==6.11.0
@@ -27,7 +27,7 @@ jsonpatch==1.33
 jsonpointer==2.4
 jsonschema==4.20.0
 jsonschema-spec==0.2.4
-jsonschema-specifications==2023.11.2
+jsonschema-specifications==2023.7.1
 langchain==0.0.348
 langchain-core==0.0.12
 langsmith==0.0.69
@@ -58,7 +58,7 @@ pypdf==3.17.3
 python-dateutil==2.8.2
 pytz==2023.3.post1
 PyYAML==6.0.1
-referencing==0.32.0
+referencing==0.30.2
 regex==2023.10.3
 requests==2.31.0
 rfc3339-validator==0.1.4
