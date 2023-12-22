@@ -43,13 +43,13 @@ def summarise_changes():
     # Make sure to run: export OPENAI_API_KEY=...
     # Before switching to openAI model
     # Make sure to run: `export OPENAI_API_KEY=...` if using openAI
-    llm = OpenAI() if os.getenv("USE_OPEN_AI") else Ollama(model='mistral')
+    llm = OpenAI(temperature=0) if os.getenv("USE_OPEN_AI") else Ollama(model='mistral')
 
     docs = load_pdfs()
 
-    prompt_template = """Write a summary of changes between the two texts provided.
-    Specifically compare the text labelled Version1 with the text labelled Version2 and provide a helpful human readable 
-    and detailed summary of the changes.
+    prompt_template = """Write a bullet point summary of changes between the two texts provided.
+    Specifically compare the text labelled Version1 with the text labelled Version2 and provide a helpful summary of the 
+    all the changes and the context of those changes.
     If there are no changes between the texts, dont produce any result.
     {text}
     SUMMARY OF CHANGES:"""
